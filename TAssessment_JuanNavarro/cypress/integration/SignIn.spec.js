@@ -38,7 +38,9 @@ describe('Pruebas de Sign In', () => {
                     SignInPage.clickNoID();
                     cy.url().should('eq', 'https://www.nba.com/account/sign-up');
                 }
-            } else  if(test.name === 'CTC_10_Sign_In_nonregistered_email' ||
+            } 
+            
+            else  if(test.name === 'CTC_10_Sign_In_nonregistered_email' ||
                 test.name === 'CTC_12_Sign_In_error_password' ||
                 test.name === 'CTC_13_Sign_In_invalid_email_format' ||
                 test.name === 'CTC_14_Sign_In_correct_sign_in'
@@ -47,13 +49,23 @@ describe('Pruebas de Sign In', () => {
                 SignInPage.typePassword(test.password);
                 SignInPage.clickSubmitB();
                 cy.scrollTo('top');
-            }else if(test.name === 'CTC_11_Sign_In_without_password'){
-                SignInPage.typeEmail(test.name);
+
+                if(test.name === 'CTC_13_Sign_In_invalid_email_format'){
+                    !SignInPage.validateEmailFormat(test.email);
+                    cy.contains('La dirección de correo debe ser una dirección válida.').should('be.visible');
+                }
+
+            }
+            
+            else if(test.name === 'CTC_11_Sign_In_without_password'){
+                SignInPage.typeEmail(test.email);
                 SignInPage.clickSubmitB();
                 cy.scrollTo('top');
                 cy.contains('Contraseña obligatoria.').should('be.visible');
                 
-            } else if(test.name === 'CTC_15_Sign_In_visible_password' ||
+            } 
+            
+            else if(test.name === 'CTC_15_Sign_In_visible_password' ||
                        test.name === 'CTC_16_Sign_In_return_hidden_password'){
                         SignInPage.valTogPassShow();
                         SignInPage.typePassword(test.password);

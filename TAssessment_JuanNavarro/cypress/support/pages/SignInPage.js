@@ -52,6 +52,11 @@ class SignInPage{
     valTogPassHide(){
         return this.elements.passTogleButton().find('span').should('contain', 'hide password');
     }
+
+    validateEmailFormat(email) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return emailRegex.test(email);
+    }
 }
 
 module.exports = new SignInPage();
