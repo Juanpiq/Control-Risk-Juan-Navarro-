@@ -23,7 +23,28 @@ describe('Pruebas para esconder y mostrar los resultados de partidos', () =>{
         HomePage.validShownScores();
         cy.contains('Content is hidden to prevent spoilers. ').should('not.exist');
         HomePage.ScorestoggleAction();
-        HomePage.validHiddenScores();
+        cy.contains('Content is hidden to prevent spoilers. ').should('be.visible');
+        HomePage.verifyScoreToggleInactive();
+        //HomePage.validHiddenScores();
 
-    })
+    });
+
+    it('CTC_25_Home_Page_Show_Scores', () =>{
+        HomePage.verifyScoreToggleActive();
+        HomePage.validShownScores();
+        cy.contains('Content is hidden to prevent spoilers. ').should('not.exist');
+        HomePage.ScorestoggleAction();
+        cy.contains('Content is hidden to prevent spoilers. ').should('be.visible');
+        HomePage.verifyScoreToggleInactive();
+        
+        HomePage.ScorestoggleAction();
+        HomePage.verifyScoreToggleActive();
+        cy.contains('Content is hidden to prevent spoilers. ').should('not.exist');
+    });
+
+    it('CTC_26_Cart_Add_item_to_cart', () => {
+        HomePage.hoverStore();
+    });
+
+
 });

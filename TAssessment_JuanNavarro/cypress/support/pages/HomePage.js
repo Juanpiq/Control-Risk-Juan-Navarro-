@@ -2,9 +2,8 @@ class HomePage{
     elements = {
         urlbase: 'https://www.nba.com/',
         scoresToggle: () => cy.xpath("//span[@data-id='nba:game-tracker:hide-scores:toggle']"),
-        scoresContent: () => cy.get('.CarouselDynamic_cd__77Fo_')
-
-
+        scoresContent: () => cy.get('.CarouselDynamic_cd__77Fo_'),
+        storeMenu: () => cy.xpath("//span[@data-has-icon='false'][contains(.,'Store')]")
     }
 
 
@@ -27,12 +26,16 @@ class HomePage{
         cy.visit(this.elements.urlbase);
     }
 
-    validHiddenScores(){
-        return this.elements.scoresContent().should('be.visible');
-    }
+    /*validHiddenScores(){
+        return this.elements.scoresContent().should('not.be.visible');
+    }*/
 
     validShownScores(){
         return this.elements.scoresContent().should('be.visible');
+    }
+
+    hoverStore(){
+        this.elements.storeMenu().trigger('mouseover')
     }
 }
 
