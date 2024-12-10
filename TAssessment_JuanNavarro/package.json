@@ -1,0 +1,20 @@
+{
+  "name": "tassessment_juannavarro",
+  "version": "1.0.0",
+  "description": "Automation Technical Assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "cypress:open": "cypress open"
+  },
+  "keywords": [
+    "automation",
+    "cypress"
+  ],
+  "author": "Juan Navarro",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.16.1",
+    "cypress-xpath": "^2.0.1"
+  }
+}
